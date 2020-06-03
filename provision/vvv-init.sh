@@ -53,6 +53,13 @@ install_themes() {
   fi
 }
 
+install_card() {
+  OD_CARDS=$(get_config_value 'cards_od_url' '')
+  if [ ! -z "${OD_CARDS}" ]; then
+      echo " * Kaarten downloaden van: '${OD_CARDS}'"
+  fi
+}
+
 copy_nginx_configs() {
   echo " * Copying the sites Nginx config template"
   if [ -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx-custom.conf" ]; then
@@ -221,5 +228,6 @@ copy_nginx_configs
 setup_wp_config_constants
 install_plugins
 install_themes
+install_card
 
 echo " * Site Template provisioner script completed for ${VVV_SITE_NAME}"
