@@ -226,8 +226,8 @@ fi
 
 copy_nginx_configs
 setup_wp_config_constants
+install_card
 install_plugins
 install_themes
-install_card
 
 echo " * Site Template provisioner script completed for ${VVV_SITE_NAME}"
