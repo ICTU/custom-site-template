@@ -38,7 +38,7 @@ install_plugins() {
   if [ ! -z "${WP_PLUGINS}" ]; then
     for plugin in ${WP_PLUGINS//- /$'\n'}; do
         echo " * Installing/activating plugin: '${plugin}'"
-        noroot wp plugin install "${plugin}" --activate
+        noroot wp plugin install "${plugin}" --force
     done
   fi
 }
@@ -48,7 +48,7 @@ install_themes() {
   if [ ! -z "${WP_THEMES}" ]; then
       for theme in ${WP_THEMES//- /$'\n'}; do
         echo " * Installing theme: '${theme}'"
-        noroot wp theme install "${theme}"
+        noroot wp theme install "${theme}" --force
       done
   fi
 }
