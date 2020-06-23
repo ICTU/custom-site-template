@@ -43,6 +43,16 @@ install_plugins() {
   fi
 }
 
+install_subsites() {
+  WP_SUBSITES=$(get_config_value 'install_subsites' '')
+  if [ ! -z "${WP_SUBSITES}" ]; then
+    for subsite in ${WP_SUBSITES//- /$'\n'}; do
+        echo " * Installing/activating subsite: '${subsite}'"
+        noroot wp site create --slug="${plugin}"
+    done
+  fi
+}
+
 install_themes() {
   WP_THEMES=$(get_config_value 'install_themes' '')
   if [ ! -z "${WP_THEMES}" ]; then
@@ -221,5 +231,6 @@ copy_nginx_configs
 setup_wp_config_constants
 install_plugins
 install_themes
+install_subsites
 
 echo " * Site Template provisioner script completed for ${VVV_SITE_NAME}"
