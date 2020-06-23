@@ -58,7 +58,7 @@ install_themes() {
   if [ ! -z "${WP_THEMES}" ]; then
       for theme in ${WP_THEMES//- /$'\n'}; do
         echo " * Installing theme: '${theme}'"
-        noroot wp theme install "${theme}"
+        noroot wp theme install "${theme}" --force
       done
   fi
 }
