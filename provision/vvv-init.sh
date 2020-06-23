@@ -212,7 +212,7 @@ else
   fi
 
   if ! $(noroot wp core is-installed ); then
-    echo " * WordPress is present but isn't installed to the database, checking for SQL dumps in wp-content/database.sql or the main backup folder."
+    echo " * WordPress is present but isnt installed to the database, checking for SQL dumps in wp-content/database.sql or the main backup folder."
     if [ -f "${VVV_PATH_TO_SITE}/public_html/wp-content/database.sql" ]; then
       restore_db_backup "${VVV_PATH_TO_SITE}/public_html/wp-content/database.sql"
     elif [ -f "/srv/database/backups/${VVV_SITE_NAME}.sql" ]; then
