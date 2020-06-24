@@ -48,7 +48,7 @@ install_subsites() {
   if [ ! -z "${WP_SUBSITES}" ]; then
     for subsite in ${WP_SUBSITES//- /$'\n'}; do
         echo " * Installing/activating subsite: '${subsite}'"
-        noroot wp site create --slug="${plugin}"
+        noroot wp site create --allow-root  --slug="${subsite}" --title="${subsite}"
     done
   fi
 }
@@ -195,6 +195,8 @@ update_wp() {
 
 setup_database
 setup_nginx_folders
+
+composer require hellonico/timber-dump-extension
 
 cd "${VVV_PATH_TO_SITE}/public_html"
 
