@@ -198,7 +198,7 @@ INSTALL_GRAVITY=$(get_config_value 'install_gravity_forms' '')
 GRAVITY_KEY=$(get_config_value 'gravity_key' '')
 if [ ! -z "${INSTALL_GRAVITY}" ]; then
   echo " * Installing Gravity Forms using the specified license key"
-  wp gf install --key=${GRAVITY_KEY} --force
+  noroot wp gf install --key=${GRAVITY_KEY} --force
 fi
 }
 
