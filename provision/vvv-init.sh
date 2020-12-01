@@ -235,4 +235,13 @@ install_plugins
 install_themes
 install_subsites
 
+# Installing Gravity Forms using the specified license key.
+INSTALL_GRAVITY=$(get_config_value 'install_gravity_forms' '')
+GRAVITY_KEY=$(get_config_value 'gravity_key' '')
+if [ ! -z "${INSTALL_GRAVITY}" ]; then
+  echo " * Installing Gravity Forms using the specified license key"
+  wp gf install --key=${GRAVITY_KEY} --force
+fi
+
+
 echo " * Site Template provisioner script completed for ${VVV_SITE_NAME}"
